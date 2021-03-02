@@ -20,5 +20,5 @@ runs:
          NUMBER=$(wc -l result.txt)
          echo "::set-output name=filesNo::$(echo $NUMBER)"
       shell: bash
-    - run: echo "I found  ${{ steps.scanned-files.outputs.NUMBER}} dangerous files"
+    - run: echo "I found ${{ steps.scanned-files.outputs.filesNo}} dangerous files"
       shell: bash
