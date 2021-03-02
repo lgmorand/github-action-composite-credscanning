@@ -21,3 +21,4 @@ runs:
          echo "::set-output name=filesNo::$(echo $NUMBER)"
       shell: bash
     - run: "I found $NUMBER dangerous files"
+      shell: bash
