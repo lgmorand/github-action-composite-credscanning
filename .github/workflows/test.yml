@@ -5,6 +5,7 @@ on:
     inputs:
       folder:
         required: true 
+        default: "src"
 jobs:
 
   test:
@@ -18,3 +19,5 @@ jobs:
         uses: lgmorand/github-action-composite-credscanning@main
         with:
           folderToScan: "${{ github.event.inputs.folder }}"
+      - run: echo "${{ steps.composite.outputs.filesNo }} files contains a password" 
+     
