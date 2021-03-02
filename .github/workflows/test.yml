@@ -15,9 +15,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       
-      - id: myCompositeAction
-        uses: lgmorand/github-action-composite-credscanning@main
+      - uses: lgmorand/github-action-composite-credscanning@main
         with:
           folderToScan: "${{ github.event.inputs.folder }}"
-      - run: echo "${{ steps.myCompositeAction.outputs.scanned-files }} files contains a password" 
      
