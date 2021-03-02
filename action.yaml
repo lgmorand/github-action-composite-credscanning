@@ -18,6 +18,7 @@ runs:
     - id: scanned-files
       run: |
          NUMBER=$(wc -l result.txt)
+         echo $NUMBER
          echo "::set-output name=filesNo::$(echo $NUMBER)"
       shell: bash
     - run: echo "I found ${{ steps.scanned-files.outputs.filesNo}} dangerous files"
