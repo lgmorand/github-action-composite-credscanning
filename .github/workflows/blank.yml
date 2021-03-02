@@ -1,0 +1,18 @@
+name: Test composite action
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      
+      - id: composite
+        uses: lgmorand/github-action-composite-credscanning@main
+        with:
+          folderToScan: "/src"
