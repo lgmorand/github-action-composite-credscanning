@@ -2,7 +2,9 @@ name: Test composite action
 
 on:
   workflow_dispatch:
-
+    inputs:
+      folder:
+        required: true 
 jobs:
 
   test:
@@ -15,4 +17,4 @@ jobs:
       - id: composite
         uses: lgmorand/github-action-composite-credscanning@main
         with:
-          folderToScan: "/src"
+          folderToScan: "${{ github.event.inputs.folder }}"
