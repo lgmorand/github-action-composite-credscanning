@@ -17,8 +17,7 @@ runs:
       working-directory: ${{ inputs.folderToScan }}
     - id: scanned-files
       run: |
-         NUMBER=$(wc -l result.txt)
-         echo $NUMBER
+         NUMBER=$(wc -l < result.txt)
          echo "::set-output name=filesNo::$(echo $NUMBER)"
       shell: bash
     - run: echo "I found ${{ steps.scanned-files.outputs.filesNo}} dangerous files"
