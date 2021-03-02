@@ -20,5 +20,5 @@ runs:
          NUMBER=$(wc -l result.txt)
          echo "::set-output name=filesNo::$(echo $NUMBER)"
       shell: bash
-    - run: "I found $NUMBER dangerous files"
+    - run: echo "I found $NUMBER dangerous files"
       shell: bash
