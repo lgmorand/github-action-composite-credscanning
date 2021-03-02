@@ -15,10 +15,10 @@ runs:
     - run: grep "password" . -R > ../result.txt
       shell: bash
       working-directory: ${{ inputs.folderToScan }}
-    - id: scanned-files
+    - id: count-files
       run: |
          NUMBER=$(wc -l < result.txt)
          echo "::set-output name=filesNo::$(echo $NUMBER)"
       shell: bash
-    - run: echo "I found ${{ steps.scanned-files.outputs.filesNo}} dangerous files"
+    - run: echo "I found ${{ steps.count-files.outputs.filesNo}} dangerous files"
       shell: bash
