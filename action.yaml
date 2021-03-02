@@ -4,7 +4,7 @@ inputs:
   folderToScan:  # path
     description: 'The folder where to scan files'
     required: true
-    default: '.'
+    default: '/src'
 outputs:
   scanned-files: 
     description: "Number of files scanned"
@@ -12,8 +12,9 @@ outputs:
 runs:
   using: "composite"
   steps: 
-    - run: ${{ github.action_path }}/scanning-script.sh
+    - run: grep "password" . -R > ../result.txt
       shell: bash
+      working-directory: ${{ github.event.inputs.folderToScan }}
     - id: scanned-files
       run: |
          NUMBER=$(wc -l result.txt)
