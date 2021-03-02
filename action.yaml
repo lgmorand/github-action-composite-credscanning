@@ -1,0 +1,25 @@
+name: 'Credentials scanning'
+description: 'Scan source code to find if credentials have been hardcoded'
+inputs:
+  folderToScan:  # path
+    description: 'The folder where to scan files'
+    required: true
+    default: '.'
+outputs:
+  scanned-files: 
+    description: "Number of files scanned"
+    value: ${{ steps.scanned-files.outputs.filesNo }}
+runs:
+  using: "composite"
+  steps: 
+    - run: ${{ github.action_path }}/scanning-script.sh
+      shell: bash
+    - id: scanned-files
+      run: |
+         NUMBER=$(wc -l result.txt)
+         echo "::set-output name=filesNo::$(echo $NUMBER)"
+      shell: bash
+    - uses: actions/upload-artifact@v1
+        with:
+          name: "Results"
+          path: result.txt
