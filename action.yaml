@@ -14,7 +14,7 @@ runs:
   steps: 
     - run: grep "password" . -R > ../result.txt
       shell: bash
-      working-directory: ${{ github.event.inputs.folderToScan }}
+      working-directory: ${{ inputs.folderToScan }}
     - id: scanned-files
       run: |
          NUMBER=$(wc -l result.txt)
