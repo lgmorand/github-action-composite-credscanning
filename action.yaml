@@ -8,7 +8,7 @@ inputs:
 outputs:
   scanned-files: 
     description: "Number of files scanned"
-    value: ${{ steps.scanned-files.outputs.filesNo }}
+    value: ${{ steps.count-files.outputs.filesNo }}
 runs:
   using: "composite"
   steps: 
