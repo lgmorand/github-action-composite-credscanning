@@ -20,7 +20,3 @@ runs:
          NUMBER=$(wc -l result.txt)
          echo "::set-output name=filesNo::$(echo $NUMBER)"
       shell: bash
-    - uses: actions/upload-artifact@v1
-        with:
-          name: "Results"
-          path: result.txt
