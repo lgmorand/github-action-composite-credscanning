@@ -21,7 +21,12 @@ jobs:
         with:
           folderToScan: "${{ github.event.inputs.folder }}"
           
-      - run: echo "${{ env.COUNT }} files contains a password" 
+      - run: |
+            if [ ${{ env.COUNT }} > 0 ]
+            then
+               echo "::error::Certains fichiers contiennent des mots de passe en dur"
+               exit 1
+            fi
         env:
           COUNT: ${{ steps.myCompositeAction.outputs.scanned-files }}
      
