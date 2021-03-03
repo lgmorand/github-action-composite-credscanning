@@ -8,7 +8,7 @@ inputs:
 outputs:
   scanned-files: 
     description: "Number of files scanned"
-    value: ${{ steps.count-files.outputs.filesNo }}
+    value: ${{ steps.count-files.outputs.filesCount }}
 runs:
   using: "composite"
   steps: 
@@ -17,8 +17,8 @@ runs:
       working-directory: ${{ inputs.folderToScan }}
     - id: count-files
       run: |
-         NUMBER=$(wc -l < result.txt)
-         echo "::set-output name=filesNo::$(echo $NUMBER)"
+         COUNT=$(wc -l < result.txt)
+         echo "::set-output name=filesCount::$(echo $COUNT)"
       shell: bash
     - run: echo "I found ${{ steps.count-files.outputs.filesNo}} dangerous files"
       shell: bash
